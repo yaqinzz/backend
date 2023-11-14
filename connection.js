@@ -1,10 +1,10 @@
 const mysql = require('mysql')
-
+require('dotenv').config()
 const db = mysql.createConnection({
-  host: 'b6lf3dgaotrkvc6st773-mysql.services.clever-cloud.com',
-  user: 'uy97bgcfpdgqpz5o',
-  password: 'beLfII5V9ZbjkFta0XHG',
-  database: 'b6lf3dgaotrkvc6st773',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 })
 
 module.exports = db
