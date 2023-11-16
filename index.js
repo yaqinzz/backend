@@ -5,8 +5,13 @@ const bodyParser = require('body-parser') //import body-parser
 const db = require('./connection')
 const response = require('./response')
 
-app.use(bodyParser.json()) //mengambil format dari FE menjadi json
+// app.use(bodyParser.json()) //mengambil format dari FE menjadi json
 
+app.use(bodyParser.json(), function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  next()
+})
 app.get('/', (req, res) => {
   const sql = 'SELECT * FROM mahasiswa'
   db.query(sql, (error, result) => {
